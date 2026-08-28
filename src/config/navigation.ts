@@ -2,27 +2,30 @@ import { NavItem } from '@/types';
 
 export const mainNavigation: NavItem[] = [
   { label: 'Accueil', href: '#' },
-  { label: 'Services', href: '#services' },
-  { label: 'Réalisations', href: '#portfolio' },
-  { label: 'À Propos', href: '#about' },
-  { label: 'Avis', href: '#testimonials' },
-  { label: 'Tarifs', href: '#pricing' },
+  { label: 'Prestations & Soins', href: '#services' },
+  { label: 'Galerie & Styles', href: '#portfolio' },
+  { label: 'Le Salon', href: '#about' },
+  { label: 'Forfaits Beauté', href: '#pricing' },
+  { label: 'Avis Clientes', href: '#testimonials' },
   { label: 'FAQ', href: '#faq' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact & RDV', href: '#contact' },
 ];
 
 export const footerNavigation = {
   services: [
-    { label: 'Conception & 3D', href: '#services' },
-    { label: 'Fabrication sur mesure', href: '#services' },
-    { label: 'Pose & Agencement', href: '#services' },
-    { label: 'Rénovation de prestige', href: '#services' },
+    { label: 'Knotless & Boho Braids', href: '#services' },
+    { label: 'Pose de Perruques & Tissages', href: '#services' },
+    { label: 'Onglerie & Pédicure Spa', href: '#services' },
+    { label: 'Cils, Microblading & Lip Blush', href: '#services' },
+    { label: 'Espace Hommes / Barber', href: '#services' },
+    { label: 'Coiffure & Soins Enfants', href: '#services' },
   ],
   company: [
-    { label: 'Notre savoir-faire', href: '#about' },
-    { label: 'Nos réalisations', href: '#portfolio' },
-    { label: 'Témoignages clients', href: '#testimonials' },
-    { label: 'Tarifs & formules', href: '#pricing' },
+    { label: 'Le Salon de la Diaspora', href: '#about' },
+    { label: 'Galerie de Réalisations', href: '#portfolio' },
+    { label: 'Témoignages & Avis', href: '#testimonials' },
+    { label: 'Forfaits Tout-en-un', href: '#pricing' },
+    { label: 'Réservation WhatsApp', href: 'https://wa.me/221771644848' },
   ],
   legal: [
     { label: 'Mentions Légales', href: '/legal/mentions-legales' },

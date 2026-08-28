@@ -10,7 +10,7 @@ import './globals.css';
 export const metadata: Metadata = generatePageMetadata();
 
 export const viewport: Viewport = {
-  themeColor: '#2563eb',
+  themeColor: '#c59737',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -24,10 +24,10 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/images/brand/logo-transparent.png" sizes="any" />
+        <link rel="apple-touch-icon" href="/images/brand/logo-transparent.png" />
       </head>
-      <body className="min-h-screen flex flex-col bg-white text-surface-900">
+      <body className="min-h-screen flex flex-col bg-[#FAF8F5] text-surface-900">
         {/* Accessibility Skip Link */}
         <a
           href="#main-content"
@@ -39,11 +39,11 @@ export default function RootLayout({
         {/* Global Structured Data */}
         <SchemaOrg />
 
-        {/* Header */}
+        {/* Header Navigation */}
         <Header />
 
-        {/* Main Content Area */}
-        <main id="main-content" className="flex-1">
+        {/* Main Content Body */}
+        <main id="main-content" className="flex-grow">
           {children}
         </main>
 

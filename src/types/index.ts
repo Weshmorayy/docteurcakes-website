@@ -5,7 +5,7 @@ export interface NavItem {
 }
 
 export interface SocialLink {
-  platform: 'linkedin' | 'instagram' | 'facebook' | 'twitter' | 'github' | 'youtube' | 'whatsapp';
+  platform: 'linkedin' | 'instagram' | 'facebook' | 'twitter' | 'github' | 'youtube' | 'whatsapp' | 'tiktok';
   url: string;
   label: string;
 }
@@ -13,11 +13,14 @@ export interface SocialLink {
 export interface ContactInfo {
   phone: string;
   phoneDisplay: string;
+  whatsappNumber: string;
+  whatsappUrl: string;
   email: string;
   address: {
     street: string;
+    neighborhood: string;
     city: string;
-    postalCode: string;
+    postalCode?: string;
     country: string;
     countryCode: string;
   };
@@ -26,14 +29,16 @@ export interface ContactInfo {
     hours: string;
   }[];
   googleMapsUrl?: string;
-  emergencyPhone?: string;
+  landmarkNotice?: string;
 }
 
 export interface LegalInfo {
   companyName: string;
-  legalForm: string; // e.g. "SAS", "SARL", "Auto-entrepreneur"
-  capital?: string; // e.g. "10 000 €"
-  siret: string;
+  legalForm: string;
+  capital?: string;
+  siret?: string;
+  ninea?: string;
+  rccm?: string;
   rcsCity: string;
   vatNumber?: string;
   directorPublication: string;
@@ -44,12 +49,13 @@ export interface LegalInfo {
 
 export interface ServiceItem {
   id: string;
+  category: string;
   title: string;
   description: string;
   iconName: string;
   features?: string[];
-  link?: string;
   popular?: boolean;
+  priceNote?: string;
 }
 
 export interface ProjectItem {
@@ -67,10 +73,9 @@ export interface TestimonialItem {
   id: string;
   author: string;
   role: string;
-  company?: string;
+  location?: string;
   content: string;
   rating: number;
-  avatar?: string;
   date?: string;
 }
 
@@ -82,6 +87,7 @@ export interface FaqItem {
 export interface PricingPlan {
   id: string;
   name: string;
+  categoryName: string;
   price: string;
   period?: string;
   description: string;
@@ -103,10 +109,15 @@ export interface SiteConfig {
   domain: string;
   url: string;
   tagline: string;
+  taglineSecondary: string;
   description: string;
   keywords: string[];
   locale: string;
   defaultOgImage: string;
+  logo: {
+    transparent: string;
+    dark: string;
+  };
   
   contact: ContactInfo;
   legal: LegalInfo;
@@ -152,6 +163,7 @@ export interface SiteConfig {
     badge: string;
     title: string;
     subtitle: string;
+    categories: string[];
     items: ServiceItem[];
   };
 

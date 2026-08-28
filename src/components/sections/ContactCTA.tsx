@@ -1,43 +1,65 @@
 import React from 'react';
-import { Phone, Mail, ArrowRight, Clock, ShieldCheck } from 'lucide-react';
+import { MessageCircle, Phone, Sparkles, MapPin, Clock } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 
 export function ContactCTA() {
+  const { contact } = siteConfig;
+
   return (
-    <section className="py-16 sm:py-20 bg-gradient-to-r from-brand-900 via-brand-800 to-indigo-950 text-white relative overflow-hidden">
-      {/* Visual background accents */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
+    <section className="py-16 sm:py-24 bg-gradient-to-br from-surface-950 via-[#16130E] to-surface-950 text-white relative overflow-hidden">
+      {/* Decorative Warm Gold Glow Circles */}
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none" />
 
-      <Container size="lg" className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8 space-y-4 text-center lg:text-left">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-brand-200 border border-white/10">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              Devis & déplacement d’étude gratuits
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
-              Un projet en tête ? Obtenez votre étude chiffrée sous 48h
-            </h2>
-            <p className="text-base sm:text-lg text-brand-100 max-w-2xl mx-auto lg:mx-0">
-              Contactez directement notre équipe pour échanger sur vos envies, vos contraintes et vos délais.
-            </p>
+      <Container size="md" className="relative z-10 text-center space-y-8">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/20 border border-brand-400/40 text-brand-300 text-xs font-bold uppercase tracking-wider">
+          <Sparkles className="w-3.5 h-3.5 text-brand-400" />
+          <span>Réservation Rapide & Sans Attente</span>
+        </div>
+
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight font-heading">
+          Envie d’une mise en beauté d’exception ?
+        </h2>
+
+        <p className="text-base sm:text-lg text-surface-300 max-w-xl mx-auto leading-relaxed">
+          Rejoignez-nous à Ouest-Foire ou réservez votre créneau directement sur WhatsApp avec notre équipe. Nous sommes ouverts 7j/7 de 09h à 20h.
+        </p>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <Button
+            href={contact.whatsappUrl}
+            isExternal
+            variant="glow"
+            size="lg"
+            className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white shadow-xl shadow-emerald-600/30"
+          >
+            <MessageCircle className="w-5 h-5 mr-2" />
+            <span>Réserver via WhatsApp</span>
+          </Button>
+
+          <Button
+            href={`tel:${contact.phone}`}
+            variant="outline"
+            size="lg"
+            className="w-full sm:w-auto border-brand-400/60 hover:bg-white/10 text-white"
+          >
+            <Phone className="w-5 h-5 mr-2 text-brand-400" />
+            <span>{contact.phoneDisplay}</span>
+          </Button>
+        </div>
+
+        {/* Location & Hours note */}
+        <div className="pt-6 border-t border-white/10 flex flex-wrap items-center justify-center gap-6 text-xs text-surface-300">
+          <div className="flex items-center gap-1.5">
+            <MapPin className="w-4 h-4 text-brand-400" />
+            <span>Ouest-Foire, Dakar (proche VDN / CICES)</span>
           </div>
-
-          <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center">
-            <a
-              href={`tel:${siteConfig.contact.phone}`}
-              className="flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-white text-brand-900 font-extrabold hover:bg-brand-50 transition-all shadow-lg hover:shadow-xl active:scale-[0.98]"
-            >
-              <Phone className="w-5 h-5 text-brand-600" />
-              <span>{siteConfig.contact.phoneDisplay}</span>
-            </a>
-            <Button href="#contact" variant="outline" size="md" className="border-white/30 text-white hover:bg-white/10">
-              <span>Remplir le formulaire</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
+          <div className="flex items-center gap-1.5">
+            <Clock className="w-4 h-4 text-brand-400" />
+            <span>7j/7 de 09h00 à 20h00</span>
           </div>
         </div>
       </Container>

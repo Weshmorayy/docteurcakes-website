@@ -1,18 +1,18 @@
 import { siteConfig } from '@/config/site';
 
 interface SchemaOrgProps {
-  type?: 'LocalBusiness' | 'Organization' | 'ProfessionalService';
+  type?: 'BeautySalon' | 'HairSalon' | 'LocalBusiness' | 'Organization';
 }
 
-export function SchemaOrg({ type = 'LocalBusiness' }: SchemaOrgProps) {
+export function SchemaOrg({ type = 'BeautySalon' }: SchemaOrgProps) {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': type,
+    '@type': ['BeautySalon', 'HairSalon', 'LocalBusiness'],
     '@id': `${siteConfig.url}/#organization`,
     name: siteConfig.name,
     legalName: siteConfig.legal.companyName,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/images/logo.png`,
+    logo: `${siteConfig.url}${siteConfig.logo.transparent}`,
     image: `${siteConfig.url}${siteConfig.defaultOgImage}`,
     description: siteConfig.description,
     telephone: siteConfig.contact.phone,
@@ -21,17 +21,34 @@ export function SchemaOrg({ type = 'LocalBusiness' }: SchemaOrgProps) {
       '@type': 'PostalAddress',
       streetAddress: siteConfig.contact.address.street,
       addressLocality: siteConfig.contact.address.city,
-      postalCode: siteConfig.contact.address.postalCode,
+      addressRegion: 'Dakar',
       addressCountry: siteConfig.contact.address.countryCode,
     },
-    openingHoursSpecification: siteConfig.contact.openingHours.map((h) => ({
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '08:30',
-      closes: '19:00',
-    })),
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 14.7475,
+      longitude: -17.4725,
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+          'Sunday',
+        ],
+        opens: '09:00',
+        closes: '20:00',
+      },
+    ],
     sameAs: siteConfig.socials.map((s) => s.url),
-    priceRange: '€€€',
+    priceRange: 'FCFA',
+    currenciesAccepted: 'XOF',
+    paymentAccepted: 'Cash, Wave, Orange Money',
   };
 
   const faqSchema = {
