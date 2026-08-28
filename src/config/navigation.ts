@@ -2,13 +2,13 @@ import { NavItem } from '@/types';
 
 export const mainNavigation: NavItem[] = [
   { label: 'Accueil', href: '#' },
-  { label: 'Prestations & Soins', href: '#services' },
-  { label: 'Galerie & Styles', href: '#portfolio' },
+  { label: 'Prestations', href: '#services' },
+  { label: 'Galerie', href: '#portfolio' },
   { label: 'Le Salon', href: '#about' },
-  { label: 'Forfaits Beauté', href: '#pricing' },
-  { label: 'Avis Clientes', href: '#testimonials' },
+  { label: 'Forfaits', href: '#pricing' },
+  { label: 'Avis', href: '#testimonials' },
   { label: 'FAQ', href: '#faq' },
-  { label: 'Contact & RDV', href: '#contact' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export const footerNavigation = {

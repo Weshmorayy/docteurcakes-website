@@ -9,8 +9,8 @@ const nextConfig = {
   trailingSlash: isStaticExport,
   
   images: {
-    // Enable unoptimized images for static exports to work smoothly with any static server
-    unoptimized: isStaticExport,
+    // Unoptimized allows local images to load instantly and reliably in both dev and SSG
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

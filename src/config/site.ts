@@ -86,7 +86,7 @@ export const siteConfig: SiteConfig = {
   ],
 
   hero: {
-    badge: '👑 Le Salon de Référence de la Diaspora à Dakar',
+    badge: 'Le Salon de Référence de la Diaspora à Dakar',
     title: 'Sublimez votre beauté naturelle avec',
     titleHighlight: 'l’élégance Glow & Shine',
     subtitle:
