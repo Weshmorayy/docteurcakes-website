@@ -3,7 +3,6 @@ import { Hero } from '@/components/sections/Hero';
 import { Offers } from '@/components/sections/Offers';
 import { Flavors } from '@/components/sections/Flavors';
 import { OrderBuilder } from '@/components/sections/OrderBuilder';
-import { Gallery } from '@/components/sections/Gallery';
 import { PracticalInfo } from '@/components/sections/PracticalInfo';
 
 export default function HomePage() {
@@ -13,7 +12,6 @@ export default function HomePage() {
       <Offers />
       <Flavors />
       <OrderBuilder />
-      <Gallery />
       <PracticalInfo />
     </>
   );

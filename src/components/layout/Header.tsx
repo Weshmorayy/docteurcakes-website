@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Phone, MessageCircle, Clock, Cake } from 'lucide-react';
+import { Cake, MessageCircle } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { mainNavigation } from '@/config/navigation';
 import { Container } from '@/components/ui/Container';
@@ -15,9 +15,9 @@ export function Header() {
       {/* Top Banner with Akwaba & Quick Contact */}
       <div className="bg-surface-900 text-surface-200 py-1.5 px-3 text-xs">
         <Container size="lg" className="flex items-center justify-between">
-          <div className="flex items-center gap-2 mx-auto lg:mx-0">
-            <span className="text-amber-400 font-bold">Akwaba !</span>
-            <span className="text-surface-300">Pâtisserie Docteur Cakes · Atelier Cocody, Abidjan</span>
+          <div className="flex items-center justify-center lg:justify-start gap-1.5 w-full lg:w-auto text-center">
+            <span className="text-amber-400 font-bold whitespace-nowrap">Akwaba !</span>
+            <span className="text-surface-300 truncate">Pâtisserie Docteur Cakes · Atelier Cocody, Abidjan</span>
           </div>
 
           <div className="hidden lg:flex items-center gap-4">

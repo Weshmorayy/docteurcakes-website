@@ -5,7 +5,6 @@ export const mainNavigation: NavItem[] = [
   { label: 'Tarifs & Offres', href: '#tarifs' },
   { label: 'Parfums', href: '#parfums' },
   { label: 'Simulateur', href: '#simulateur' },
-  { label: 'Galerie', href: '#galerie' },
   { label: 'Livraison & Acompte', href: '#infos' },
 ];
 
