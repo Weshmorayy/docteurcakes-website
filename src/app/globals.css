@@ -2,58 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  
-  /* Brand color tokens - Glow & Shine Luxury Gold Palette */
-  --brand-50: #fbf8f0;
-  --brand-100: #f6efdb;
-  --brand-200: #ecdcb2;
-  --brand-300: #e0c483;
-  --brand-400: #d4ab58;
-  --brand-500: #c59737;
-  --brand-600: #b07e2c;
-  --brand-700: #8c6025;
-  --brand-800: #734c23;
-  --brand-900: #5f3e20;
-  --brand-950: #36200e;
-}
-
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
-  }
+  :root {
+    /* Warm Artisan Pastry & Gold Accents */
+    --brand-50: #FFF9F5;
+    --brand-100: #FFF0E6;
+    --brand-200: #FFE0CC;
+    --brand-300: #FFC299;
+    --brand-400: #FFA366;
+    --brand-500: #D97706; /* Warm Amber Caramel */
+    --brand-600: #B45309;
+    --brand-700: #92400E;
+    --brand-800: #78350F;
+    --brand-900: #451A03;
+    --brand-950: #290F02;
 
-  body {
-    @apply bg-[#FAF8F5] text-surface-900 antialiased font-sans selection:bg-brand-500 selection:text-white;
-  }
-
-  /* Accessibility focus ring */
-  *:focus-visible {
-    @apply outline-none ring-2 ring-brand-500 ring-offset-2;
+    /* Soft Vanilla Cream & Cocoa Slate */
+    --surface-50: #FAF8F5;
+    --surface-100: #F3EFEA;
+    --surface-200: #E5DFD7;
+    --surface-300: #D0C6B8;
+    --surface-400: #A39682;
+    --surface-500: #736754;
+    --surface-600: #544A3B;
+    --surface-700: #3D352A;
+    --surface-800: #26211A;
+    --surface-900: #17130F;
+    --surface-950: #0D0A08;
   }
 }
 
-/* Custom scrollbar and subtle gold glow effects */
-.gold-gradient {
-  background: linear-gradient(135deg, #d4ab58 0%, #ecdcb2 50%, #c59737 100%);
+html {
+  scroll-behavior: smooth;
 }
 
-.gold-text-gradient {
-  background: linear-gradient(135deg, #c59737 0%, #e0c483 50%, #b07e2c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+body {
+  color: #17130F;
+  background-color: #FAF8F5;
+  font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-.dark-card-gradient {
-  background: linear-gradient(180deg, #18181b 0%, #09090b 100%);
-}
-
-/* Print optimizations */
-@media print {
-  header, footer, #contact {
-    display: none !important;
-  }
+::selection {
+  background-color: #FBBF24;
+  color: #17130F;
 }

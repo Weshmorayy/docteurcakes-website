@@ -1,106 +1,32 @@
 export interface NavItem {
   label: string;
   href: string;
-  isExternal?: boolean;
 }
 
-export interface SocialLink {
-  platform: 'linkedin' | 'instagram' | 'facebook' | 'twitter' | 'github' | 'youtube' | 'whatsapp' | 'tiktok';
-  url: string;
-  label: string;
-}
-
-export interface ContactInfo {
-  phone: string;
-  phoneDisplay: string;
-  whatsappNumber: string;
-  whatsappUrl: string;
-  email: string;
-  address: {
-    street: string;
-    neighborhood: string;
-    city: string;
-    postalCode?: string;
-    country: string;
-    countryCode: string;
-  };
-  openingHours: {
-    days: string;
-    hours: string;
-  }[];
-  googleMapsUrl?: string;
-  landmarkNotice?: string;
-}
-
-export interface LegalInfo {
-  companyName: string;
-  legalForm: string;
-  capital?: string;
-  siret?: string;
-  ninea?: string;
-  rccm?: string;
-  rcsCity: string;
-  vatNumber?: string;
-  directorPublication: string;
-  hostName: string;
-  hostAddress: string;
-  hostWebsite: string;
-}
-
-export interface ServiceItem {
-  id: string;
-  category: string;
-  title: string;
-  description: string;
-  iconName: string;
-  features?: string[];
-  popular?: boolean;
-  priceNote?: string;
-}
-
-export interface ProjectItem {
+export interface CakeCategory {
   id: string;
   title: string;
-  category: string;
-  description: string;
-  image: string;
-  imageAlt: string;
-  tags: string[];
-  link?: string;
-}
-
-export interface TestimonialItem {
-  id: string;
-  author: string;
-  role: string;
-  location?: string;
-  content: string;
-  rating: number;
-  date?: string;
-}
-
-export interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-export interface PricingPlan {
-  id: string;
-  name: string;
-  categoryName: string;
-  price: string;
-  period?: string;
+  unitPrice: string;
+  minimumOrder: string;
+  startingPrice: string;
   description: string;
   features: string[];
-  isPopular?: boolean;
-  ctaText: string;
-  ctaHref: string;
+  popular?: boolean;
 }
 
-export interface StatItem {
-  value: string;
-  label: string;
-  description?: string;
+export interface FlavorItem {
+  name: string;
+  note?: string;
+  isPopular?: boolean;
+}
+
+export interface GalleryItem {
+  id: string;
+  title: string;
+  category: string;
+  image: string;
+  imageAlt: string;
+  details: string;
 }
 
 export interface SiteConfig {
@@ -109,97 +35,117 @@ export interface SiteConfig {
   domain: string;
   url: string;
   tagline: string;
-  taglineSecondary: string;
   description: string;
   keywords: string[];
   locale: string;
   defaultOgImage: string;
+
   logo: {
-    transparent: string;
     dark: string;
+    transparent: string;
   };
-  
-  contact: ContactInfo;
-  legal: LegalInfo;
-  socials: SocialLink[];
-  
+
+  contact: {
+    phone: string;
+    phoneSecondary?: string;
+    phoneDisplay: string;
+    phoneDisplaySecondary?: string;
+    whatsappNumber: string;
+    whatsappUrl: string;
+    email: string;
+    address: {
+      street: string;
+      neighborhood: string;
+      city: string;
+      postalCode: string;
+      country: string;
+      countryCode: string;
+    };
+    payments: {
+      wave: string;
+      mtn: string;
+      orange: string;
+      notice: string;
+    };
+    delivery: {
+      cocody: string;
+      horsCocody: string;
+      horsAbidjan: string;
+    };
+    openingHours: {
+      days: string;
+      hours: string;
+    }[];
+  };
+
+  legal: {
+    companyName: string;
+    legalForm: string;
+    capital: string;
+    ninea: string;
+    rcsCity: string;
+    directorPublication: string;
+    hostName: string;
+    hostAddress: string;
+    hostWebsite: string;
+  };
+
+  socials: {
+    platform: 'facebook' | 'instagram' | 'whatsapp';
+    url: string;
+    label: string;
+  }[];
+
   hero: {
     badge: string;
     title: string;
     titleHighlight: string;
     subtitle: string;
-    primaryCta: {
+    ctaPrimary: {
       text: string;
       href: string;
     };
-    secondaryCta: {
+    ctaSecondary: {
       text: string;
       href: string;
     };
-    trustBadges: {
-      rating: string;
-      reviewCount: string;
-      label: string;
-    };
-    heroImage: {
-      src: string;
-      alt: string;
+    featuredCake: {
+      image: string;
+      title: string;
+      tag: string;
     };
   };
 
-  about: {
+  offers: {
     badge: string;
     title: string;
     subtitle: string;
-    paragraphs: string[];
-    stats: StatItem[];
-    image: {
-      src: string;
-      alt: string;
-    };
+    categories: CakeCategory[];
   };
 
-  services: {
+  flavors: {
     badge: string;
     title: string;
     subtitle: string;
-    categories: string[];
-    items: ServiceItem[];
+    list: FlavorItem[];
   };
 
-  portfolio: {
+  orderBuilder: {
     badge: string;
     title: string;
     subtitle: string;
-    items: ProjectItem[];
   };
 
-  testimonials: {
+  gallery: {
     badge: string;
     title: string;
     subtitle: string;
-    items: TestimonialItem[];
+    items: GalleryItem[];
   };
 
-  pricing?: {
+  conditions: {
     badge: string;
     title: string;
     subtitle: string;
-    items: PricingPlan[];
-  };
-
-  faq: {
-    badge: string;
-    title: string;
-    subtitle: string;
-    items: FaqItem[];
-  };
-
-  contactSection: {
-    badge: string;
-    title: string;
-    subtitle: string;
-    formTitle: string;
-    formDescription: string;
   };
 }

@@ -3,10 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
-import { Menu, X, Phone, MessageCircle, MapPin, ArrowRight } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle, MapPin, ArrowRight, Cake } from 'lucide-react';
 import { mainNavigation } from '@/config/navigation';
 import { siteConfig } from '@/config/site';
-import { Button } from '@/components/ui/Button';
 
 export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,93 +26,114 @@ export function MobileNav() {
     };
   }, [isOpen]);
 
+  const handleLinkClick = (href: string) => {
+    setIsOpen(false);
+    if (href.startsWith('#')) {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   const drawerContent = (
     <div className="relative z-[99999]">
-      {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity duration-300"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
         onClick={() => setIsOpen(false)}
         aria-hidden="true"
       />
 
-      {/* Slide-out Drawer */}
       <div
-        className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white shadow-2xl p-6 flex flex-col justify-between overflow-y-auto transform transition-transform duration-300 ease-in-out border-l border-surface-200"
+        className="fixed top-0 right-0 h-full w-[85%] max-w-sm bg-white text-surface-900 shadow-2xl p-6 flex flex-col justify-between overflow-y-auto transform transition-transform duration-300 ease-in-out"
         style={{ transform: isOpen ? 'translateX(0)' : 'translateX(100%)' }}
       >
         <div>
-          {/* Header of Drawer */}
-          <div className="flex items-center justify-between pb-5 border-b border-surface-200">
+          {/* Header */}
+          <div className="flex items-center justify-between pb-4 border-b border-surface-200">
             <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-surface-950 p-1 flex items-center justify-center border border-brand-400/40">
+              <div className="w-10 h-10 flex items-center justify-center bg-amber-50 rounded-xl p-1 border border-amber-200">
                 <Image
                   src={siteConfig.logo.transparent}
                   alt={siteConfig.name}
-                  width={34}
-                  height={34}
+                  width={36}
+                  height={36}
                   className="object-contain"
                 />
               </div>
               <div>
-                <span className="font-extrabold text-lg text-surface-950 block leading-tight font-heading">
-                  Glow & Shine
+                <span className="font-black text-sm text-surface-950 block font-heading">
+                  DOCTEUR CAKES
                 </span>
-                <span className="text-[10px] font-semibold text-brand-700 block">
-                  Ouest-Foire, Dakar
+                <span className="text-[10px] font-bold text-amber-700 block">
+                  Cocody, Abidjan
                 </span>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="p-2 rounded-xl text-surface-600 hover:text-surface-950 hover:bg-surface-100 transition-colors"
+              className="p-2 rounded-xl text-surface-500 hover:text-surface-900 hover:bg-surface-100"
               aria-label="Fermer le menu"
             >
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Nav links */}
+          {/* Links */}
           <nav className="mt-5 flex flex-col space-y-1">
             {mainNavigation.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-between px-4 py-3 rounded-xl text-sm font-bold text-surface-800 hover:text-brand-700 hover:bg-brand-50 transition-colors"
+                onClick={(e) => {
+                  if (item.href.startsWith('#')) {
+                    e.preventDefault();
+                    handleLinkClick(item.href);
+                  } else {
+                    setIsOpen(false);
+                  }
+                }}
+                className="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-surface-800 hover:text-amber-800 hover:bg-amber-50 transition-colors"
               >
                 <span>{item.label}</span>
-                <ArrowRight className="w-4 h-4 text-brand-600 opacity-60" />
+                <ArrowRight className="w-3.5 h-3.5 text-amber-600" />
               </a>
             ))}
           </nav>
         </div>
 
-        {/* Quick Contact Drawer Footer */}
-        <div className="pt-5 border-t border-surface-200 space-y-3 bg-white">
-          <div className="flex items-center gap-2 text-xs text-surface-600">
-            <MapPin className="w-3.5 h-3.5 text-brand-600 shrink-0" />
-            <span>Ouest-Foire (près VDN / CICES), Dakar</span>
-          </div>
-
+        {/* Footer */}
+        <div className="pt-4 border-t border-surface-200 space-y-2.5">
           <a
             href={`tel:${siteConfig.contact.phone}`}
-            className="flex items-center gap-3 p-2.5 rounded-xl bg-surface-50 hover:bg-brand-50 text-sm font-bold text-surface-900 hover:text-brand-700 transition-colors border border-surface-200"
+            className="flex items-center gap-2.5 p-3 rounded-xl bg-surface-100 text-xs font-bold text-surface-900 hover:bg-surface-200"
           >
-            <Phone className="w-4 h-4 text-brand-600" />
+            <Phone className="w-4 h-4 text-amber-700" />
             <span>{siteConfig.contact.phoneDisplay}</span>
           </a>
 
-          <Button
-            href={siteConfig.contact.whatsappUrl}
-            isExternal
-            onClick={() => setIsOpen(false)}
-            variant="primary"
-            size="md"
-            className="w-full justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-md shadow-emerald-600/20"
+          <a
+            href="#simulateur"
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick('#simulateur');
+            }}
+            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-amber-600 text-white font-extrabold text-xs uppercase tracking-wider shadow-sm"
           >
-            <MessageCircle className="w-4 h-4 mr-2" />
-            <span>Réserver sur WhatsApp</span>
-          </Button>
+            <Cake className="w-4 h-4" />
+            <span>Composer mon gâteau</span>
+          </a>
+
+          <a
+            href={siteConfig.contact.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-emerald-600 text-white font-bold text-xs"
+          >
+            <MessageCircle className="w-4 h-4" />
+            <span>WhatsApp Direct</span>
+          </a>
         </div>
       </div>
     </div>
@@ -123,14 +143,13 @@ export function MobileNav() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="p-2 rounded-xl text-surface-900 hover:text-brand-700 hover:bg-brand-50 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-colors border border-surface-200"
-        aria-label="Ouvrir le menu de navigation"
+        className="p-2 rounded-xl text-surface-800 hover:bg-surface-100 border border-surface-300"
+        aria-label="Ouvrir le menu"
         aria-expanded={isOpen}
       >
-        <Menu className="w-6 h-6" />
+        <Menu className="w-5 h-5" />
       </button>
 
-      {/* Render via Portal to body to avoid clipping / stacking context bugs */}
       {mounted && isOpen && createPortal(drawerContent, document.body)}
     </>
   );

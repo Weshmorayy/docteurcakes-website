@@ -1,67 +1,59 @@
+import React from 'react';
 import { siteConfig } from '@/config/site';
 
-interface SchemaOrgProps {
-  type?: 'BeautySalon' | 'HairSalon' | 'LocalBusiness' | 'Organization';
-}
-
-export function SchemaOrg({ type = 'BeautySalon' }: SchemaOrgProps) {
+export function SchemaOrg() {
   const localBusinessSchema = {
     '@context': 'https://schema.org',
-    '@type': ['BeautySalon', 'HairSalon', 'LocalBusiness'],
-    '@id': `${siteConfig.url}/#organization`,
+    '@type': 'Bakery',
     name: siteConfig.name,
-    legalName: siteConfig.legal.companyName,
-    url: siteConfig.url,
-    logo: `${siteConfig.url}${siteConfig.logo.transparent}`,
     image: `${siteConfig.url}${siteConfig.defaultOgImage}`,
-    description: siteConfig.description,
+    '@id': siteConfig.url,
+    url: siteConfig.url,
     telephone: siteConfig.contact.phone,
     email: siteConfig.contact.email,
+    priceRange: '3500 FCFA - 140000 FCFA',
     address: {
       '@type': 'PostalAddress',
       streetAddress: siteConfig.contact.address.street,
       addressLocality: siteConfig.contact.address.city,
-      addressRegion: 'Dakar',
+      addressRegion: siteConfig.contact.address.neighborhood,
+      postalCode: siteConfig.contact.address.postalCode,
       addressCountry: siteConfig.contact.address.countryCode,
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 14.7475,
-      longitude: -17.4725,
+      latitude: 5.359952,
+      longitude: -4.008256,
     },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: [
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday',
-          'Sunday',
-        ],
-        opens: '09:00',
-        closes: '20:00',
-      },
-    ],
+    openingHoursSpecification: siteConfig.contact.openingHours.map((hours) => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '08:00',
+      closes: '20:00',
+    })),
     sameAs: siteConfig.socials.map((s) => s.url),
-    priceRange: 'FCFA',
-    currenciesAccepted: 'XOF',
-    paymentAccepted: 'Cash, Wave, Orange Money',
   };
 
-  const faqSchema = {
+  const organizationSchema = {
     '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: siteConfig.faq.items.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer,
-      },
-    })),
+    '@type': 'Organization',
+    name: siteConfig.name,
+    url: siteConfig.url,
+    logo: `${siteConfig.url}${siteConfig.logo.transparent}`,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: siteConfig.contact.phone,
+      contactType: 'customer service',
+      availableLanguage: ['French'],
+    },
   };
 
   return (
@@ -70,12 +62,10 @@ export function SchemaOrg({ type = 'BeautySalon' }: SchemaOrgProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
-      {siteConfig.faq.items.length > 0 && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
     </>
   );
 }

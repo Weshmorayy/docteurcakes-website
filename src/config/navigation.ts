@@ -2,30 +2,25 @@ import { NavItem } from '@/types';
 
 export const mainNavigation: NavItem[] = [
   { label: 'Accueil', href: '#' },
-  { label: 'Prestations', href: '#services' },
-  { label: 'Galerie', href: '#portfolio' },
-  { label: 'Le Salon', href: '#about' },
-  { label: 'Forfaits', href: '#pricing' },
-  { label: 'Avis', href: '#testimonials' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Tarifs & Offres', href: '#tarifs' },
+  { label: 'Parfums', href: '#parfums' },
+  { label: 'Simulateur', href: '#simulateur' },
+  { label: 'Galerie', href: '#galerie' },
+  { label: 'Livraison & Acompte', href: '#infos' },
 ];
 
 export const footerNavigation = {
-  services: [
-    { label: 'Knotless & Boho Braids', href: '#services' },
-    { label: 'Pose de Perruques & Tissages', href: '#services' },
-    { label: 'Onglerie & Pédicure Spa', href: '#services' },
-    { label: 'Cils, Microblading & Lip Blush', href: '#services' },
-    { label: 'Espace Hommes / Barber', href: '#services' },
-    { label: 'Coiffure & Soins Enfants', href: '#services' },
+  products: [
+    { label: 'Gâteaux à la crème (dès 17 500 F)', href: '#tarifs' },
+    { label: 'Gâteaux pâte à sucre (dès 40 000 F)', href: '#tarifs' },
+    { label: 'Wedding Cakes (dès 140 000 F)', href: '#tarifs' },
+    { label: 'Guide des 13 parfums', href: '#parfums' },
   ],
-  company: [
-    { label: 'Le Salon de la Diaspora', href: '#about' },
-    { label: 'Galerie de Réalisations', href: '#portfolio' },
-    { label: 'Témoignages & Avis', href: '#testimonials' },
-    { label: 'Forfaits Tout-en-un', href: '#pricing' },
-    { label: 'Réservation WhatsApp', href: 'https://wa.me/221771644848' },
+  info: [
+    { label: 'Calculateur WhatsApp', href: '#simulateur' },
+    { label: 'Modalités de livraison Abidjan', href: '#infos' },
+    { label: 'Moyens de paiement (Wave, Orange, MTN)', href: '#infos' },
+    { label: 'Page Facebook (57K fans)', href: 'https://facebook.com/Docteurcakes' },
   ],
   legal: [
     { label: 'Mentions Légales', href: '/legal/mentions-legales' },
