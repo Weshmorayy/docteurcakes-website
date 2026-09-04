@@ -14,38 +14,38 @@ export function Flavors() {
       subtitle={flavors.subtitle}
       background="subtle"
     >
-      <div className="max-w-4xl mx-auto">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div className="max-w-4xl mx-auto space-y-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5">
           {flavors.list.map((flavor, idx) => (
             <div
               key={idx}
-              className={`p-3.5 rounded-xl border transition-all flex flex-col justify-between ${
+              className={`p-4 rounded-2xl border transition-all flex flex-col justify-between ${
                 flavor.isPopular
-                  ? 'bg-surface-50 border-brand-500/40 shadow-xs'
-                  : 'bg-surface-900 border-surface-200'
+                  ? 'bg-[#1C1710] border-[#D4AF37]/50 shadow-md ring-1 ring-[#D4AF37]/20'
+                  : 'bg-[#12100E] border-[#D4AF37]/20 hover:border-[#D4AF37]/40'
               }`}
             >
-              <div className="flex items-center justify-between gap-1 mb-1.5">
-                <span className="font-bold text-xs sm:text-sm text-white">
+              <div className="flex items-center justify-between gap-1 mb-2">
+                <span className="font-extrabold text-sm text-white">
                   {flavor.name}
                 </span>
                 {flavor.isPopular && (
-                  <Sparkles className="w-3 h-3 text-brand-400 shrink-0" />
+                  <Sparkles className="w-3.5 h-3.5 text-[#F6D020] shrink-0" />
                 )}
               </div>
               {flavor.note ? (
-                <span className="text-[10px] font-bold text-brand-300 bg-brand-500/20 px-2 py-0.5 rounded-md inline-block w-fit border border-brand-500/30">
+                <span className="text-[10px] font-bold text-[#F6D020] bg-[#2A1E08] px-2.5 py-1 rounded-md inline-block w-fit border border-[#D4AF37]/40 uppercase tracking-wider">
                   {flavor.note}
                 </span>
               ) : (
-                <span className="text-[10px] text-surface-400">Classique</span>
+                <span className="text-[10px] text-stone-400 font-medium">Parfum Authentique</span>
               )}
             </div>
           ))}
         </div>
 
-        <div className="mt-6 p-4 rounded-xl bg-surface-50 border border-brand-500/30 text-center text-xs text-surface-600 font-medium">
-          💡 <strong className="text-brand-300">Astuce :</strong> Vous pouvez combiner 2 parfums dans le même gâteau (ex: Chocolat & Baileys, ou Vanille & Fruits rouges).
+        <div className="p-5 rounded-2xl bg-[#1C1710] border border-[#D4AF37]/40 text-center text-xs sm:text-sm text-stone-200 font-medium shadow-md">
+          💡 <strong className="text-[#F6D020]">Astuce Gourmande :</strong> Vous pouvez combiner 2 parfums dans le même gâteau (ex: Chocolat & Baileys, ou Vanille & Fruits rouges) sans supplément.
         </div>
       </div>
     </Section>

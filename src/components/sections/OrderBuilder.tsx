@@ -22,22 +22,22 @@ const CAKE_TYPES: CakeType[] = [
 
 const FLAVOR_OPTIONS = [
   'Fruits rouges',
-  'Caramel',
-  'Chocolat',
-  'Vanille',
-  'Oreo',
-  'Baileys',
-  'Cerelac',
+  'Caramel beurre salé',
+  'Chocolat intense',
+  'Vanille de Madagascar',
+  'Oreo & Cream',
+  'Baileys gourmand',
+  'Cerelac régressif',
   'Crème toffee muscade',
-  'Spéculoos',
-  'Citron',
+  'Spéculoos croquant',
+  'Citron meringué',
 ];
 
 const DELIVERY_ZONES = [
-  { id: 'cocody', name: 'Cocody (15 000 F)', fee: 15000 },
-  { id: 'horsCocody', name: 'Abidjan hors Cocody (25 000 F)', fee: 25000 },
-  { id: 'horsAbidjan', name: 'Hors Abidjan / Intérieur (40 000 F)', fee: 40000 },
-  { id: 'retrait', name: 'Retrait à l’atelier (Gratuit)', fee: 0 },
+  { id: 'cocody', name: 'Cocody (15 000 FCFA)', fee: 15000 },
+  { id: 'horsCocody', name: 'Abidjan hors Cocody (25 000 FCFA)', fee: 25000 },
+  { id: 'horsAbidjan', name: 'Hors Abidjan / Intérieur (40 000 FCFA)', fee: 40000 },
+  { id: 'retrait', name: 'Retrait à l’atelier Cocody (Gratuit)', fee: 0 },
 ];
 
 export function OrderBuilder() {
@@ -74,16 +74,16 @@ export function OrderBuilder() {
       badge={orderBuilder.badge}
       title={orderBuilder.title}
       subtitle={orderBuilder.subtitle}
-      background="white"
+      background="default"
     >
       <div className="max-w-2xl mx-auto">
-        <Card className="p-6 sm:p-9 bg-surface-50 border border-brand-500/30 shadow-2xl rounded-3xl space-y-6 text-white">
+        <Card className="p-7 sm:p-10 bg-[#15120E] border-2 border-[#D4AF37]/35 shadow-2xl rounded-[32px] space-y-7 text-white">
           {/* Step 1: Cake Type */}
-          <div className="space-y-2">
-            <label className="block text-xs font-bold uppercase tracking-wider text-brand-300">
-              1. Type de gâteau :
+          <div className="space-y-3">
+            <label className="block text-xs font-black uppercase tracking-wider text-[#F6D020]">
+              1. Choisissez le type de gâteau :
             </label>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {CAKE_TYPES.map((t) => (
                 <button
                   key={t.id}
@@ -92,15 +92,18 @@ export function OrderBuilder() {
                     setSelectedType(t);
                     if (parts < t.minParts) setParts(t.minParts);
                   }}
-                  className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
+                  className={`p-3.5 rounded-2xl text-left border transition-all cursor-pointer ${
                     selectedType.id === t.id
-                      ? 'bg-gradient-to-r from-brand-900/90 to-surface-100 border-brand-400 text-white font-bold ring-1 ring-brand-400/40 shadow-md'
-                      : 'bg-surface-900/60 border-surface-200 text-surface-400 hover:bg-surface-100 hover:text-white'
+                      ? 'bg-gradient-to-r from-[#2A1E08] to-[#1C1710] border-[#D4AF37] text-white font-bold ring-2 ring-[#D4AF37]/40 shadow-lg'
+                      : 'bg-[#0E0C0A] border-[#D4AF37]/20 text-stone-300 hover:bg-[#1C1710] hover:text-white'
                   }`}
                 >
-                  <span className="text-xs block font-bold">{t.name}</span>
-                  <span className="text-[11px] text-brand-400 block mt-0.5">
-                    {t.pricePerPortion.toLocaleString('fr-FR')} F/part (min. {t.minParts}p)
+                  <span className="text-xs sm:text-sm block font-extrabold text-white">{t.name}</span>
+                  <span className="text-xs text-[#F6D020] block mt-1 font-semibold">
+                    {t.pricePerPortion.toLocaleString('fr-FR')} F/part
+                  </span>
+                  <span className="text-[10px] text-stone-400 block mt-0.5">
+                    (min. {t.minParts} parts)
                   </span>
                 </button>
               ))}
@@ -108,12 +111,12 @@ export function OrderBuilder() {
           </div>
 
           {/* Step 2: Portions Slider */}
-          <div className="space-y-2 p-4 rounded-xl bg-surface-900/90 border border-brand-500/20">
+          <div className="space-y-3 p-5 rounded-2xl bg-[#0E0C0A] border border-[#D4AF37]/25">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold uppercase tracking-wider text-brand-300">
-                2. Nombre de parts :
+              <label className="text-xs font-black uppercase tracking-wider text-[#F6D020]">
+                2. Nombre de parts souhaité :
               </label>
-              <span className="px-3 py-1 rounded-lg bg-brand-500/20 text-brand-300 font-extrabold text-sm border border-brand-500/40">
+              <span className="px-3.5 py-1.5 rounded-xl bg-[#261B01] text-[#F6D020] font-black text-sm sm:text-base border border-[#D4AF37]/50">
                 {effectiveParts} parts
               </span>
             </div>
@@ -125,28 +128,28 @@ export function OrderBuilder() {
               step={selectedType.id === 'creme' ? 1 : 5}
               value={effectiveParts}
               onChange={(e) => setParts(Number(e.target.value))}
-              className="w-full h-2 bg-surface-200 rounded-lg appearance-none cursor-pointer accent-brand-500"
+              className="w-full h-2.5 bg-stone-800 rounded-lg appearance-none cursor-pointer accent-[#D4AF37]"
             />
-            <div className="flex justify-between text-[10px] text-surface-500 font-semibold">
+            <div className="flex justify-between text-[11px] text-stone-400 font-semibold">
               <span>Min. {selectedType.minParts} parts</span>
               <span>50 parts</span>
               <span>100 parts</span>
             </div>
           </div>
 
-          {/* Step 3: Flavor selection */}
+          {/* Step 3: Flavor & Delivery */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-brand-300 mb-1.5">
+              <label className="block text-xs font-black uppercase tracking-wider text-[#F6D020] mb-2">
                 3. Parfum principal :
               </label>
               <select
                 value={selectedFlavor}
                 onChange={(e) => setSelectedFlavor(e.target.value)}
-                className="w-full px-3 py-2.5 rounded-xl border border-surface-200 text-xs font-semibold bg-surface-900 text-white focus:ring-2 focus:ring-brand-500"
+                className="w-full px-4 py-3 rounded-xl border border-[#D4AF37]/30 text-xs sm:text-sm font-semibold bg-[#0E0C0A] text-white focus:ring-2 focus:ring-[#D4AF37] focus:outline-none"
               >
                 {FLAVOR_OPTIONS.map((f) => (
-                  <option key={f} value={f} className="bg-surface-900 text-white">
+                  <option key={f} value={f} className="bg-[#171410] text-white">
                     {f}
                   </option>
                 ))}
@@ -154,16 +157,16 @@ export function OrderBuilder() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-brand-300 mb-1.5">
+              <label className="block text-xs font-black uppercase tracking-wider text-[#F6D020] mb-2">
                 4. Zone de livraison :
               </label>
               <select
                 value={deliveryZone}
                 onChange={(e) => setDeliveryZone(e.target.value)}
-                className="w-full px-3 py-2.5 rounded-xl border border-surface-200 text-xs font-semibold bg-surface-900 text-white focus:ring-2 focus:ring-brand-500"
+                className="w-full px-4 py-3 rounded-xl border border-[#D4AF37]/30 text-xs sm:text-sm font-semibold bg-[#0E0C0A] text-white focus:ring-2 focus:ring-[#D4AF37] focus:outline-none"
               >
                 {DELIVERY_ZONES.map((z) => (
-                  <option key={z.id} value={z.id} className="bg-surface-900 text-white">
+                  <option key={z.id} value={z.id} className="bg-[#171410] text-white">
                     {z.name}
                   </option>
                 ))}
@@ -173,7 +176,7 @@ export function OrderBuilder() {
 
           {/* Step 5: Custom note/theme */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-brand-300 mb-1">
+            <label className="block text-xs font-black uppercase tracking-wider text-[#F6D020] mb-2">
               5. Thème / Prénom / Âge (optionnel) :
             </label>
             <input
@@ -181,21 +184,21 @@ export function OrderBuilder() {
               value={customTheme}
               onChange={(e) => setCustomTheme(e.target.value)}
               placeholder="Ex: Thème Oursons & Cookies pour Naïla 4 ans"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-surface-200 text-xs bg-surface-900 text-white placeholder-surface-500 focus:ring-2 focus:ring-brand-500"
+              className="w-full px-4 py-3 rounded-xl border border-[#D4AF37]/30 text-xs sm:text-sm bg-[#0E0C0A] text-white placeholder-stone-500 focus:ring-2 focus:ring-[#D4AF37] focus:outline-none"
             />
           </div>
 
           {/* Price Calculation Summary */}
-          <div className="p-4 rounded-2xl bg-gradient-to-r from-[#2A2210] to-[#1A160E] border border-brand-500/40 flex items-center justify-between">
+          <div className="p-5 rounded-2xl bg-gradient-to-r from-[#2B1F08] via-[#1F1707] to-[#141005] border border-[#D4AF37]/50 flex items-center justify-between">
             <div>
-              <span className="text-[10px] uppercase font-bold text-brand-400 block">
+              <span className="text-[11px] uppercase font-bold text-[#F6D020] block">
                 Estimation totale (Gâteau + Livraison)
               </span>
-              <span className="text-2xl font-black text-white font-heading">
+              <span className="text-2xl sm:text-3xl font-black text-white font-heading">
                 {totalPrice.toLocaleString('fr-FR')} FCFA
               </span>
             </div>
-            <span className="text-[11px] text-brand-300 font-semibold text-right">
+            <span className="text-xs text-[#FFF08F] font-semibold text-right leading-tight">
               Acompte requis<br />pour bloquer la date
             </span>
           </div>
@@ -205,7 +208,7 @@ export function OrderBuilder() {
             onClick={handleSendWhatsApp}
             variant="primary"
             size="lg"
-            className="w-full justify-center bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-black text-xs sm:text-sm uppercase tracking-wider py-3.5 rounded-xl shadow-lg shadow-emerald-600/20 cursor-pointer"
+            className="w-full justify-center bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-black text-xs sm:text-sm uppercase tracking-wider py-4 rounded-2xl shadow-xl shadow-emerald-600/20 cursor-pointer"
           >
             <MessageCircle className="w-4 h-4 mr-2" />
             <span>Envoyer ma commande sur WhatsApp</span>

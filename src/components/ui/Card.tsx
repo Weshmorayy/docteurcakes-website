@@ -4,24 +4,19 @@ import { cn } from '@/lib/utils';
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   hoverEffect?: boolean;
-  glass?: boolean;
 }
 
 export function Card({
   children,
   hoverEffect = true,
-  glass = false,
   className,
   ...props
 }: CardProps) {
   return (
     <div
       className={cn(
-        'rounded-2xl border p-6 sm:p-8 transition-all duration-300',
-        glass
-          ? 'bg-white/80 backdrop-blur-md border-surface-200/80 dark:bg-surface-900/80 dark:border-surface-800/80 shadow-sm'
-          : 'bg-white border-surface-200/80 dark:bg-surface-900 dark:border-surface-800 shadow-sm',
-        hoverEffect && 'hover:border-brand-300 hover:shadow-xl hover:-translate-y-1 dark:hover:border-brand-700',
+        'rounded-3xl border border-[#D4AF37]/25 bg-[#171410] p-6 sm:p-8 transition-all duration-300 text-white shadow-xl',
+        hoverEffect && 'hover:border-[#D4AF37]/60 hover:shadow-2xl hover:shadow-[#D4AF37]/10 hover:-translate-y-1',
         className
       )}
       {...props}

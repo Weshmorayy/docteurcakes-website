@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from './Container';
-import { Badge } from './Badge';
 import { cn } from '@/lib/utils';
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
@@ -9,7 +8,7 @@ interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   title?: string;
   subtitle?: string;
   centered?: boolean;
-  background?: 'white' | 'subtle' | 'dark' | 'brand';
+  background?: 'default' | 'subtle' | 'card';
   containerSize?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
   children: React.ReactNode;
 }
@@ -20,61 +19,46 @@ export function Section({
   title,
   subtitle,
   centered = true,
-  background = 'white',
+  background = 'default',
   containerSize = 'lg',
   children,
   className,
   ...props
 }: SectionProps) {
-  const backgroundClasses = {
-    white: 'bg-white dark:bg-surface-950',
-    subtle: 'bg-surface-50/80 border-y border-surface-200/60 dark:bg-surface-900/50 dark:border-surface-800/60',
-    dark: 'bg-surface-900 text-white dark:bg-surface-950',
-    brand: 'bg-brand-900 text-white',
+  const bgStyles = {
+    default: 'bg-[#0C0A09]',
+    subtle: 'bg-[#14110E] border-y border-[#D4AF37]/15',
+    card: 'bg-[#1A1612]',
   };
 
   return (
     <section
       id={id}
-      className={cn('py-16 sm:py-20 lg:py-28 relative scroll-mt-16', backgroundClasses[background], className)}
+      className={cn('py-16 sm:py-20 lg:py-24 relative scroll-mt-16 text-white', bgStyles[background], className)}
       {...props}
     >
       <Container size={containerSize}>
         {(badge || title || subtitle) && (
           <div
             className={cn(
-              'mb-12 sm:mb-16 space-y-4 max-w-3xl',
+              'mb-12 sm:mb-16 space-y-3 max-w-3xl',
               centered && 'mx-auto text-center'
             )}
           >
             {badge && (
               <div>
-                <Badge variant={background === 'dark' || background === 'brand' ? 'surface' : 'primary'}>
+                <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#261B01] text-[#F6D020] border border-[#D4AF37]/40 shadow-sm">
                   {badge}
-                </Badge>
+                </span>
               </div>
             )}
             {title && (
-              <h2
-                className={cn(
-                  'text-3xl sm:text-4xl font-extrabold tracking-tight',
-                  background === 'dark' || background === 'brand'
-                    ? 'text-white'
-                    : 'text-surface-900 dark:text-white'
-                )}
-              >
+              <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-white font-heading">
                 {title}
               </h2>
             )}
             {subtitle && (
-              <p
-                className={cn(
-                  'text-lg sm:text-xl font-normal leading-relaxed',
-                  background === 'dark' || background === 'brand'
-                    ? 'text-surface-300'
-                    : 'text-surface-600 dark:text-surface-400'
-                )}
-              >
+              <p className="text-sm sm:text-base font-normal leading-relaxed text-stone-300">
                 {subtitle}
               </p>
             )}

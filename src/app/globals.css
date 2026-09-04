@@ -4,46 +4,47 @@
 
 @layer base {
   :root {
-    /* Royal Gold & Warm Caramel Accents */
-    --brand-50: #FFFDF5;
-    --brand-100: #FFFBE6;
-    --brand-200: #FFF4BF;
-    --brand-300: #FFE780;
-    --brand-400: #F6D044;
-    --brand-500: #D4AF37; /* Pure Luxury Gold */
-    --brand-600: #B89223;
-    --brand-700: #937016;
-    --brand-800: #6D5111;
-    --brand-900: #423007;
-    --brand-950: #261B03;
+    /* Royal Rich Gold */
+    --brand-50: #FFFDF0;
+    --brand-100: #FFF8C7;
+    --brand-200: #FFF08F;
+    --brand-300: #FFE54C;
+    --brand-400: #F6D020;
+    --brand-500: #D4AF37; /* Pure Luxury Metallic Gold */
+    --brand-600: #B89020;
+    --brand-700: #937012;
+    --brand-800: #6D510B;
+    --brand-900: #423004;
+    --brand-950: #261B01;
 
-    /* Deep Velvet Black & Charcoal Surface */
-    --surface-50: #1C1A17;
-    --surface-100: #24201C;
-    --surface-200: #332E28;
-    --surface-300: #4A433A;
-    --surface-400: #7A7062;
-    --surface-500: #A89D8D;
-    --surface-600: #D1C8BC;
-    --surface-700: #E8E2D8;
-    --surface-800: #F5F1EA;
+    /* Deep Obsidian Black Surface */
+    --surface-50: #1C1917;
+    --surface-100: #292524;
+    --surface-200: #44403C;
+    --surface-300: #78716C;
+    --surface-400: #A8A29E;
+    --surface-500: #D6D3D1;
+    --surface-600: #E7E5E4;
+    --surface-700: #F5F5F4;
+    --surface-800: #FAFAF9;
     --surface-900: #12100E;
-    --surface-950: #0A0908;
+    --surface-950: #0C0A09;
   }
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #0A0908;
+  background-color: #0C0A09;
+  color: #FFFFFF;
 }
 
 body {
-  color: #F5F1EA;
-  background-color: #0A0908;
+  color: #FFFFFF;
+  background-color: #0C0A09;
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
 ::selection {
   background-color: #D4AF37;
-  color: #0A0908;
+  color: #0C0A09;
 }
