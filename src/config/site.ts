@@ -35,6 +35,7 @@ export const siteConfig: SiteConfig = {
     whatsappNumber: '+2250749911390',
     whatsappUrl:
       'https://wa.me/2250749911390?text=Bonjour%20Docteur%20Cakes%2C%20je%20souhaite%20commander%20un%20g%C3%A2teau%20personnalis%C3%A9.',
+    whatsappChannelUrl: 'https://whatsapp.com/channel/0029VbCOIAnJf05fOwaVu80w',
     email: 'docteurcakes73@gmail.com',
     address: {
       street: 'Rue G30, 188',
@@ -78,8 +79,13 @@ export const siteConfig: SiteConfig = {
   socials: [
     {
       platform: 'facebook',
-      url: 'https://facebook.com/Docteurcakes',
+      url: 'https://www.facebook.com/Docteurcackes/',
       label: 'Facebook (57K Abonnés)',
+    },
+    {
+      platform: 'whatsapp-channel',
+      url: 'https://whatsapp.com/channel/0029VbCOIAnJf05fOwaVu80w',
+      label: 'Chaîne WhatsApp Officielle',
     },
     {
       platform: 'whatsapp',
@@ -188,46 +194,6 @@ export const siteConfig: SiteConfig = {
     badge: 'Calculateur Instantané',
     title: 'Estimez votre gâteau en 3 clics',
     subtitle: 'Sélectionnez votre type de gâteau, le nombre de parts et préparez votre message WhatsApp.',
-  },
-
-  gallery: {
-    badge: 'Créations de l’Atelier',
-    title: 'Quelques gâteaux réalisés récemment',
-    subtitle: 'Chaque création est confectionnée dans notre atelier de Cocody.',
-    items: [
-      {
-        id: 'g1',
-        title: 'Wedding Cake 4 Étages Blanc & Or',
-        category: 'Mariage',
-        image: '/images/cakes/wedding-cake-royal-4-etages.jpg',
-        imageAlt: 'Grand wedding cake 4 étages avec roses et perles par Docteur Cakes',
-        details: 'Pièce montée drapée de perles avec roses fraîches et monogramme doré.',
-      },
-      {
-        id: 'g2',
-        title: 'Gâteau Bébé Elior & Oursons',
-        category: 'Anniversaire',
-        image: '/images/cakes/gateau-anniversaire-bebe-elior.jpg',
-        imageAlt: 'Gâteau d’anniversaire thème cookies et oursons',
-        details: 'Finition crème lisse avec cookies chocolatés, oursons et billes dorées.',
-      },
-      {
-        id: 'g3',
-        title: 'Château Féerique Princesse Naïla',
-        category: 'Enfants',
-        image: '/images/cakes/gateau-princesse-naila.jpg',
-        imageAlt: 'Gâteau château de princesse rose et sapins',
-        details: 'Modelage château fort rose avec sapins en relief et figurine.',
-      },
-      {
-        id: 'g4',
-        title: 'Bûche Signature Crème & Fleurs',
-        category: 'Fêtes',
-        image: '/images/cakes/gateau-signature-creme-fleurs.jpg',
-        imageAlt: 'Gâteau rectangulaire drapé de crème et fleurs roses',
-        details: 'Pochage vertical texturé avec œillets roses et bougies dorées ondulées.',
-      },
-    ],
   },
 
   conditions: {

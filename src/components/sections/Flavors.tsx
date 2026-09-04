@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Heart } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { Section } from '@/components/ui/Section';
 
@@ -21,20 +21,20 @@ export function Flavors() {
               key={idx}
               className={`p-3.5 rounded-xl border transition-all flex flex-col justify-between ${
                 flavor.isPopular
-                  ? 'bg-white border-amber-300 shadow-xs'
-                  : 'bg-white/70 border-surface-200'
+                  ? 'bg-surface-50 border-brand-500/40 shadow-xs'
+                  : 'bg-surface-900 border-surface-200'
               }`}
             >
-              <div className="flex items-center justify-between gap-1 mb-1">
-                <span className="font-bold text-xs sm:text-sm text-surface-900">
+              <div className="flex items-center justify-between gap-1 mb-1.5">
+                <span className="font-bold text-xs sm:text-sm text-white">
                   {flavor.name}
                 </span>
                 {flavor.isPopular && (
-                  <Sparkles className="w-3 h-3 text-amber-500 shrink-0" />
+                  <Sparkles className="w-3 h-3 text-brand-400 shrink-0" />
                 )}
               </div>
               {flavor.note ? (
-                <span className="text-[10px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md inline-block w-fit">
+                <span className="text-[10px] font-bold text-brand-300 bg-brand-500/20 px-2 py-0.5 rounded-md inline-block w-fit border border-brand-500/30">
                   {flavor.note}
                 </span>
               ) : (
@@ -44,8 +44,8 @@ export function Flavors() {
           ))}
         </div>
 
-        <div className="mt-6 p-4 rounded-xl bg-amber-50 border border-amber-200 text-center text-xs text-amber-900 font-medium">
-          💡 <strong>Astuce :</strong> Vous pouvez combiner 2 parfums dans le même gâteau (ex: Chocolat & Baileys, ou Vanille & Fruits rouges).
+        <div className="mt-6 p-4 rounded-xl bg-surface-50 border border-brand-500/30 text-center text-xs text-surface-600 font-medium">
+          💡 <strong className="text-brand-300">Astuce :</strong> Vous pouvez combiner 2 parfums dans le même gâteau (ex: Chocolat & Baileys, ou Vanille & Fruits rouges).
         </div>
       </div>
     </Section>

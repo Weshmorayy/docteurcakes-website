@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Phone, MapPin, MessageCircle, ArrowUp } from 'lucide-react';
+import { Radio, MessageCircle, ArrowUp } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { footerNavigation } from '@/config/navigation';
 import { Container } from '@/components/ui/Container';
@@ -12,13 +12,13 @@ export function Footer() {
   const facebook = socials.find((s) => s.platform === 'facebook');
 
   return (
-    <footer className="bg-surface-900 text-surface-300 pt-12 pb-8 border-t border-surface-800">
+    <footer className="bg-black text-surface-400 pt-12 pb-8 border-t border-brand-500/20">
       <Container size="lg">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-surface-800 text-xs sm:text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-surface-200 text-xs sm:text-sm">
           {/* Col 1 */}
           <div className="space-y-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 p-1 bg-white rounded-xl">
+              <div className="w-10 h-10 p-1 bg-black rounded-xl border border-brand-500/40">
                 <Image
                   src={siteConfig.logo.transparent}
                   alt={siteConfig.name}
@@ -31,7 +31,7 @@ export function Footer() {
                 <span className="font-black text-base text-white block font-heading">
                   DOCTEUR CAKES
                 </span>
-                <span className="text-[10px] text-amber-400 font-bold block uppercase tracking-wider">
+                <span className="text-[10px] text-brand-400 font-bold block uppercase tracking-wider">
                   Cocody, Abidjan
                 </span>
               </div>
@@ -43,7 +43,7 @@ export function Footer() {
 
           {/* Col 2 */}
           <div className="space-y-2">
-            <h4 className="font-bold text-xs uppercase tracking-wider text-amber-400">
+            <h4 className="font-bold text-xs uppercase tracking-wider text-brand-400">
               Nos Gâteaux & Tarifs
             </h4>
             <ul className="space-y-1.5 text-xs text-surface-400">
@@ -59,8 +59,8 @@ export function Footer() {
 
           {/* Col 3 */}
           <div className="space-y-2">
-            <h4 className="font-bold text-xs uppercase tracking-wider text-amber-400">
-              Contact & WhatsApp
+            <h4 className="font-bold text-xs uppercase tracking-wider text-brand-400">
+              Réseaux & WhatsApp
             </h4>
             <div className="space-y-1.5 text-xs text-surface-400">
               <p>Atelier : {contact.address.street}, {contact.address.neighborhood} ({contact.address.city})</p>
@@ -75,10 +75,20 @@ export function Footer() {
                   {contact.phoneDisplay}
                 </a>
               </p>
-              <p>Ligne 2 : {contact.phoneDisplaySecondary}</p>
+              <p>
+                <a
+                  href={contact.whatsappChannelUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-300 hover:text-white font-semibold inline-flex items-center gap-1"
+                >
+                  <Radio className="w-3.5 h-3.5 text-brand-400" />
+                  <span>Rejoindre la Chaîne WhatsApp</span>
+                </a>
+              </p>
               {facebook && (
                 <p>
-                  <a href={facebook.url} target="_blank" rel="noopener noreferrer" className="text-amber-300 hover:underline">
+                  <a href={facebook.url} target="_blank" rel="noopener noreferrer" className="text-brand-300 hover:underline">
                     Suivez-nous sur Facebook (57K fans)
                   </a>
                 </p>

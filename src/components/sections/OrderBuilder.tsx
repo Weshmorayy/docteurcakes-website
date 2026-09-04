@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { MessageCircle, Cake, Sparkles, Truck, AlertCircle } from 'lucide-react';
+import { MessageCircle, Cake } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { Section } from '@/components/ui/Section';
 import { Card } from '@/components/ui/Card';
@@ -41,7 +41,7 @@ const DELIVERY_ZONES = [
 ];
 
 export function OrderBuilder() {
-  const { orderBuilder, contact } = siteConfig;
+  const { orderBuilder } = siteConfig;
 
   const [selectedType, setSelectedType] = useState<CakeType>(CAKE_TYPES[0]);
   const [parts, setParts] = useState<number>(10);
@@ -77,10 +77,10 @@ export function OrderBuilder() {
       background="white"
     >
       <div className="max-w-2xl mx-auto">
-        <Card className="p-6 sm:p-8 bg-white border border-amber-300 shadow-xl rounded-3xl space-y-6">
+        <Card className="p-6 sm:p-9 bg-surface-50 border border-brand-500/30 shadow-2xl rounded-3xl space-y-6 text-white">
           {/* Step 1: Cake Type */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold uppercase tracking-wider text-surface-800">
+            <label className="block text-xs font-bold uppercase tracking-wider text-brand-300">
               1. Type de gâteau :
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -94,12 +94,12 @@ export function OrderBuilder() {
                   }}
                   className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
                     selectedType.id === t.id
-                      ? 'bg-amber-50 border-amber-600 text-amber-950 font-bold ring-1 ring-amber-500'
-                      : 'bg-white border-surface-200 text-surface-700 hover:bg-surface-50'
+                      ? 'bg-gradient-to-r from-brand-900/90 to-surface-100 border-brand-400 text-white font-bold ring-1 ring-brand-400/40 shadow-md'
+                      : 'bg-surface-900/60 border-surface-200 text-surface-400 hover:bg-surface-100 hover:text-white'
                   }`}
                 >
                   <span className="text-xs block font-bold">{t.name}</span>
-                  <span className="text-[11px] text-amber-700 block">
+                  <span className="text-[11px] text-brand-400 block mt-0.5">
                     {t.pricePerPortion.toLocaleString('fr-FR')} F/part (min. {t.minParts}p)
                   </span>
                 </button>
@@ -108,12 +108,12 @@ export function OrderBuilder() {
           </div>
 
           {/* Step 2: Portions Slider */}
-          <div className="space-y-2 p-4 rounded-xl bg-surface-50 border border-surface-200">
+          <div className="space-y-2 p-4 rounded-xl bg-surface-900/90 border border-brand-500/20">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold uppercase tracking-wider text-surface-800">
+              <label className="text-xs font-bold uppercase tracking-wider text-brand-300">
                 2. Nombre de parts :
               </label>
-              <span className="px-3 py-1 rounded-lg bg-amber-100 text-amber-900 font-extrabold text-sm">
+              <span className="px-3 py-1 rounded-lg bg-brand-500/20 text-brand-300 font-extrabold text-sm border border-brand-500/40">
                 {effectiveParts} parts
               </span>
             </div>
@@ -125,9 +125,9 @@ export function OrderBuilder() {
               step={selectedType.id === 'creme' ? 1 : 5}
               value={effectiveParts}
               onChange={(e) => setParts(Number(e.target.value))}
-              className="w-full h-2 bg-surface-200 rounded-lg appearance-none cursor-pointer accent-amber-600"
+              className="w-full h-2 bg-surface-200 rounded-lg appearance-none cursor-pointer accent-brand-500"
             />
-            <div className="flex justify-between text-[10px] text-surface-500">
+            <div className="flex justify-between text-[10px] text-surface-500 font-semibold">
               <span>Min. {selectedType.minParts} parts</span>
               <span>50 parts</span>
               <span>100 parts</span>
@@ -137,16 +137,16 @@ export function OrderBuilder() {
           {/* Step 3: Flavor selection */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-surface-800 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-brand-300 mb-1.5">
                 3. Parfum principal :
               </label>
               <select
                 value={selectedFlavor}
                 onChange={(e) => setSelectedFlavor(e.target.value)}
-                className="w-full px-3 py-2.5 rounded-xl border border-surface-300 text-xs font-semibold bg-white focus:ring-2 focus:ring-amber-500"
+                className="w-full px-3 py-2.5 rounded-xl border border-surface-200 text-xs font-semibold bg-surface-900 text-white focus:ring-2 focus:ring-brand-500"
               >
                 {FLAVOR_OPTIONS.map((f) => (
-                  <option key={f} value={f}>
+                  <option key={f} value={f} className="bg-surface-900 text-white">
                     {f}
                   </option>
                 ))}
@@ -154,16 +154,16 @@ export function OrderBuilder() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-surface-800 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-brand-300 mb-1.5">
                 4. Zone de livraison :
               </label>
               <select
                 value={deliveryZone}
                 onChange={(e) => setDeliveryZone(e.target.value)}
-                className="w-full px-3 py-2.5 rounded-xl border border-surface-300 text-xs font-semibold bg-white focus:ring-2 focus:ring-amber-500"
+                className="w-full px-3 py-2.5 rounded-xl border border-surface-200 text-xs font-semibold bg-surface-900 text-white focus:ring-2 focus:ring-brand-500"
               >
                 {DELIVERY_ZONES.map((z) => (
-                  <option key={z.id} value={z.id}>
+                  <option key={z.id} value={z.id} className="bg-surface-900 text-white">
                     {z.name}
                   </option>
                 ))}
@@ -173,7 +173,7 @@ export function OrderBuilder() {
 
           {/* Step 5: Custom note/theme */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-surface-800 mb-1">
+            <label className="block text-xs font-bold uppercase tracking-wider text-brand-300 mb-1">
               5. Thème / Prénom / Âge (optionnel) :
             </label>
             <input
@@ -181,21 +181,21 @@ export function OrderBuilder() {
               value={customTheme}
               onChange={(e) => setCustomTheme(e.target.value)}
               placeholder="Ex: Thème Oursons & Cookies pour Naïla 4 ans"
-              className="w-full px-3.5 py-2.5 rounded-xl border border-surface-300 text-xs bg-white focus:ring-2 focus:ring-amber-500"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-surface-200 text-xs bg-surface-900 text-white placeholder-surface-500 focus:ring-2 focus:ring-brand-500"
             />
           </div>
 
           {/* Price Calculation Summary */}
-          <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-between">
+          <div className="p-4 rounded-2xl bg-gradient-to-r from-[#2A2210] to-[#1A160E] border border-brand-500/40 flex items-center justify-between">
             <div>
-              <span className="text-[10px] uppercase font-bold text-amber-800 block">
+              <span className="text-[10px] uppercase font-bold text-brand-400 block">
                 Estimation totale (Gâteau + Livraison)
               </span>
-              <span className="text-2xl font-black text-amber-900 font-heading">
+              <span className="text-2xl font-black text-white font-heading">
                 {totalPrice.toLocaleString('fr-FR')} FCFA
               </span>
             </div>
-            <span className="text-[11px] text-amber-800 font-semibold text-right">
+            <span className="text-[11px] text-brand-300 font-semibold text-right">
               Acompte requis<br />pour bloquer la date
             </span>
           </div>
@@ -205,7 +205,7 @@ export function OrderBuilder() {
             onClick={handleSendWhatsApp}
             variant="primary"
             size="lg"
-            className="w-full justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm uppercase tracking-wider py-3.5 rounded-xl shadow-md cursor-pointer"
+            className="w-full justify-center bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-black text-xs sm:text-sm uppercase tracking-wider py-3.5 rounded-xl shadow-lg shadow-emerald-600/20 cursor-pointer"
           >
             <MessageCircle className="w-4 h-4 mr-2" />
             <span>Envoyer ma commande sur WhatsApp</span>

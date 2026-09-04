@@ -20,15 +20,6 @@ export interface FlavorItem {
   isPopular?: boolean;
 }
 
-export interface GalleryItem {
-  id: string;
-  title: string;
-  category: string;
-  image: string;
-  imageAlt: string;
-  details: string;
-}
-
 export interface SiteConfig {
   name: string;
   shortName: string;
@@ -52,6 +43,7 @@ export interface SiteConfig {
     phoneDisplaySecondary?: string;
     whatsappNumber: string;
     whatsappUrl: string;
+    whatsappChannelUrl: string;
     email: string;
     address: {
       street: string;
@@ -91,7 +83,7 @@ export interface SiteConfig {
   };
 
   socials: {
-    platform: 'facebook' | 'instagram' | 'whatsapp';
+    platform: 'facebook' | 'instagram' | 'whatsapp' | 'whatsapp-channel';
     url: string;
     label: string;
   }[];
@@ -134,13 +126,6 @@ export interface SiteConfig {
     badge: string;
     title: string;
     subtitle: string;
-  };
-
-  gallery: {
-    badge: string;
-    title: string;
-    subtitle: string;
-    items: GalleryItem[];
   };
 
   conditions: {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Cake, MessageCircle } from 'lucide-react';
+import { Cake, MessageCircle, Radio } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { mainNavigation } from '@/config/navigation';
 import { Container } from '@/components/ui/Container';
@@ -11,16 +11,26 @@ import { MobileNav } from './MobileNav';
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-surface-200 shadow-xs">
+    <header className="sticky top-0 z-40 w-full bg-[#0E0C0A]/95 backdrop-blur-md border-b border-brand-500/25 shadow-lg">
       {/* Top Banner with Akwaba & Quick Contact */}
-      <div className="bg-surface-900 text-surface-200 py-1.5 px-3 text-xs">
+      <div className="bg-black/90 text-surface-400 py-1.5 px-3 text-xs border-b border-white/5">
         <Container size="lg" className="flex items-center justify-between">
           <div className="flex items-center justify-center lg:justify-start gap-1.5 w-full lg:w-auto text-center">
-            <span className="text-amber-400 font-bold whitespace-nowrap">Akwaba !</span>
+            <span className="text-brand-400 font-bold whitespace-nowrap">Akwaba !</span>
             <span className="text-surface-300 truncate">Pâtisserie Docteur Cakes · Atelier Cocody, Abidjan</span>
           </div>
 
           <div className="hidden lg:flex items-center gap-4">
+            <a
+              href={siteConfig.contact.whatsappChannelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-300 hover:text-brand-200 font-semibold flex items-center gap-1.5 transition-colors"
+            >
+              <Radio className="w-3.5 h-3.5 text-brand-400" />
+              <span>Rejoindre notre Chaîne WhatsApp</span>
+            </a>
+            <span className="text-surface-700">|</span>
             <a
               href={siteConfig.contact.whatsappUrl}
               target="_blank"
@@ -30,8 +40,6 @@ export function Header() {
               <MessageCircle className="w-3.5 h-3.5" />
               <span>WhatsApp : {siteConfig.contact.phoneDisplay}</span>
             </a>
-            <span className="text-surface-700">|</span>
-            <span className="text-surface-400">Paiements : Wave, MTN & Orange Money</span>
           </div>
         </Container>
       </div>
@@ -42,7 +50,7 @@ export function Header() {
           <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
             <a href="#" className="flex items-center gap-3 group">
-              <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-white rounded-2xl p-1 border border-surface-200 shadow-xs group-hover:border-amber-400 transition-colors">
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-black rounded-2xl p-1 border border-brand-500/40 shadow-inner group-hover:border-brand-400 transition-colors">
                 <Image
                   src={siteConfig.logo.transparent}
                   alt={siteConfig.name}
@@ -53,10 +61,10 @@ export function Header() {
                 />
               </div>
               <div>
-                <span className="font-black text-lg sm:text-xl text-surface-950 block leading-tight font-heading">
+                <span className="font-black text-lg sm:text-xl text-white block leading-tight font-heading tracking-tight">
                   DOCTEUR CAKES
                 </span>
-                <span className="text-[10px] sm:text-[11px] font-bold text-amber-700 block uppercase tracking-wider">
+                <span className="text-[10px] sm:text-[11px] font-bold text-brand-400 block uppercase tracking-wider">
                   Pâtisserie & Cake Design · Abidjan
                 </span>
               </div>
@@ -68,7 +76,7 @@ export function Header() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="px-3 py-1.5 text-xs sm:text-sm font-bold text-surface-700 hover:text-amber-800 hover:bg-amber-50/60 rounded-xl transition-colors"
+                  className="px-3.5 py-1.5 text-xs sm:text-sm font-bold text-surface-300 hover:text-brand-300 hover:bg-white/5 rounded-xl transition-colors"
                 >
                   {item.label}
                 </a>
@@ -81,7 +89,7 @@ export function Header() {
                 href="#simulateur"
                 variant="primary"
                 size="sm"
-                className="bg-amber-600 hover:bg-amber-700 text-white font-black text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl shadow-xs"
+                className="bg-gradient-to-r from-brand-500 via-amber-400 to-brand-600 hover:from-brand-400 hover:to-amber-300 text-surface-950 font-black text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl shadow-md border border-brand-300/40"
               >
                 <Cake className="w-3.5 h-3.5 mr-1.5" />
                 <span>Commander un gâteau</span>
