@@ -17,16 +17,16 @@
     --brand-900: #423004;
     --brand-950: #261B01;
 
-    /* Deep Obsidian Black Surface */
-    --surface-50: #1C1917;
-    --surface-100: #292524;
-    --surface-200: #44403C;
-    --surface-300: #78716C;
+    /* Charcoal & Neutral Palette */
+    --surface-50: #FAFAF9;
+    --surface-100: #F5F5F4;
+    --surface-200: #E7E5E4;
+    --surface-300: #D6D3D1;
     --surface-400: #A8A29E;
-    --surface-500: #D6D3D1;
-    --surface-600: #E7E5E4;
-    --surface-700: #F5F5F4;
-    --surface-800: #FAFAF9;
+    --surface-500: #78716C;
+    --surface-600: #44403C;
+    --surface-700: #292524;
+    --surface-800: #1C1917;
     --surface-900: #12100E;
     --surface-950: #0C0A09;
   }
@@ -34,13 +34,12 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: #0C0A09;
-  color: #FFFFFF;
+  background-color: #FFFFFF;
 }
 
 body {
-  color: #FFFFFF;
-  background-color: #0C0A09;
+  color: #1C1917;
+  background-color: #FFFFFF;
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 

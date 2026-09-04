@@ -74,7 +74,7 @@ export function OrderBuilder() {
       badge={orderBuilder.badge}
       title={orderBuilder.title}
       subtitle={orderBuilder.subtitle}
-      background="default"
+      background="dark"
     >
       <div className="max-w-2xl mx-auto">
         <Card className="p-7 sm:p-10 bg-[#15120E] border-2 border-[#D4AF37]/35 shadow-2xl rounded-[32px] space-y-7 text-white">
